@@ -1,10 +1,10 @@
 FROM alpine/git as clone
-ARG gitRepo=https://oauth2:glpat-SscmerDFA8yaKBd2XyKg@gitlab.com/syniverse1/common-engineering/ui-engineering/policy-ui/adminportal.git
+ARG gitRepo=https://oauth2:yourGitLabToken@gitlab.com/syniverse1/common-engineering/ui-engineering/policy-ui/adminportal.git
 ARG gitBranch=feature/MPCCD-7980-ppko-and-travel-plan-reservation-admin-portal-v3.7.0
 ARG gitBranchURLEncode=feature%2FMPCCD-7980-ppko-and-travel-plan-reservation-admin-portal-v3.7.0
 ARG PROJECT_ID=26937658
 WORKDIR /app
-ADD "https://gitlab.com/api/v4/projects/${PROJECT_ID}/repository/branches/$gitBranchURLEncode?private_token=glpat-SscmerDFA8yaKBd2XyKg" /tmp/devalidateCache
+ADD "https://gitlab.com/api/v4/projects/${PROJECT_ID}/repository/branches/$gitBranchURLEncode?private_token=yourPrivateToken" /tmp/devalidateCache
 RUN git clone -b $gitBranch $gitRepo
 
 FROM maven:3.5-jdk-8-alpine as build
